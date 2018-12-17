@@ -14,8 +14,8 @@ import static degbug.learn.util.PrintUtil.print;;
 public class AQSDemo {
 	public static void main(String[] args) throws InterruptedException {
 		// countDownLatchDemo();
-		countDownLatchDemo2();
-//		cyclicBarrierDemo();
+//		countDownLatchDemo2();
+		cyclicBarrierDemo();
 		// semaphoreDemo();
 	}
 
@@ -96,9 +96,9 @@ public class AQSDemo {
 	 * cyclicBarrier适用于多个线程执行完某些操作后，再进行继续进行而外的操作。同时可以设置这些操作完成后执行的某个动作
 	 */
 	public static void cyclicBarrierDemo() {
-		int count = 3;
+		int count = 6;
 		CountDownLatch latch = new CountDownLatch(1);
-		CyclicBarrier barrier = new CyclicBarrier(count, () -> {
+		CyclicBarrier barrier = new CyclicBarrier(count / 2, () -> {
 			latch.countDown();
 			System.out.println(count + "线程执行完了，才执行这里");
 		});
